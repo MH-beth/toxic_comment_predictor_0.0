@@ -47,6 +47,7 @@ history = model.fit(train, epochs=1, validation_data=validation)
 input_text = input('Write something : ')
 input_text_vectorized = vectorizer(input_text)
 res = model.predict(np.expand_dims(input_text_vectorized, 0))
+print(res)
 
 
 
