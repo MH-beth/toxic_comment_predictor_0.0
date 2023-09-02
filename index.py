@@ -30,7 +30,7 @@ dataset = dataset.prefetch(8)
 
 train = dataset.take(int(len(dataset)*0.7))
 validation = dataset.skip(int(len(dataset)*0.7)).take(int(len(dataset)*0.2))
-test = dataset.skip(int(len(dataset)*0.9)).take(int(len(dataset)*0.1)) 
+test = dataset.skip(int(len(dataset)*0.9)).take(int(len(dataset)*0.1))
 
 model = Sequential()
 model.add(Embedding(MAX_FEATURES+1, 32))
@@ -44,10 +44,11 @@ model.summary()
 
 history = model.fit(train, epochs=1, validation_data=validation)
 
-input_text = input('Write something : ')
-input_text_vectorized = vectorizer(input_text)
-res = model.predict(np.expand_dims(input_text_vectorized, 0))
-print(res)
+while True :
+    input_text = input('Write something : ')
+    input_text_vectorized = vectorizer(input_text)
+    res = model.predict(np.expand_dims(input_text_vectorized, 0))
+    print(res)
 
 
 
